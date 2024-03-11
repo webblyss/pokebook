@@ -21,12 +21,11 @@ class _PokeCardState extends State<PokeCard> {
     final themeBloc = BlocProvider.of<ThemeBloc>(context);
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.9,
-      height: 350,
+      height: 400,
       child: Stack(
         children: [
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
-            height: 350,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -61,6 +60,30 @@ class _PokeCardState extends State<PokeCard> {
                         height: 10,
                       ),
                       PokemonTypeRow(types: widget.pokeBook.types),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Container(
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: themeBloc.state.primaryColor,
+                              borderRadius: BorderRadius.circular(18)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "View Pokemon",
+                                  style: themeBloc.state.textTheme.bodyMedium!.copyWith(
+                                    color: Colors.white
+                                  ), 
+                                ),
+                              const  Icon(Icons.remove_red_eye,color: Colors.white,)
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   )),
                 )

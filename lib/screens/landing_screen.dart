@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokebook/bloc/poke_bloc.dart';
 import 'package:pokebook/theme/theme_bloc.dart';
 import 'package:pokebook/widgets/svg_image.dart';
 
@@ -17,8 +16,10 @@ class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
     final themeBloc = BlocProvider.of<ThemeBloc>(context);
+     final themeColor = BlocProvider.of<ThemeBloc>(context).state.primaryColor;
     return Scaffold(
-      body: Container(
+      body: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, state) {
+        return    Container(
         height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -106,7 +107,9 @@ class _LandingScreenState extends State<LandingScreen> {
               height: 20,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                AutoRouter.of(context).pushNamed('/home');
+              },
               child: Text(
                 "View All",
                 style: themeBloc.state.textTheme.bodyMedium!.copyWith(
@@ -116,7 +119,11 @@ class _LandingScreenState extends State<LandingScreen> {
             ),
           ],
         ),
-      ),
+      );
+      },)
+      
+      
+   
     );
   }
 }

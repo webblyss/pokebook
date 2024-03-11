@@ -33,7 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final themeBloc = BlocProvider.of<ThemeBloc>(context);
     final pokeBloc = BlocProvider.of<PokeBloc>(context);
-    return Scaffold(body: BlocBuilder<ThemeBloc, ThemeData>(
+    return Scaffold(
+      body: BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, state) {
         return Container(
           height: MediaQuery.of(context).size.height,
