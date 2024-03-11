@@ -8,9 +8,6 @@ A new Flutter project.
 
 Pokebook is a Flutter application that allows users to explore information about Pokémon. It provides details about each Pokémon's characteristics, statistics, and similar Pokémon.
 
-![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-11 at 19 36 17](https://github.com/webblyss/pokebook/assets/60282806/0eadb185-e1d2-4b3d-a544-69e0db4e663e)
-![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-11 at 19 36 33](https://github.com/webblyss/pokebook/assets/60282806/8d02bf60-315c-414b-a34a-ba801deda52c)
-
 
 ## Features
 
@@ -20,13 +17,9 @@ Pokebook is a Flutter application that allows users to explore information about
 - **Responsive Design:** Enjoy a seamless experience across various devices with Pokebook's responsive layout.
 
 ## Screenshots
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-11 at 19 36 17](https://github.com/webblyss/pokebook/assets/60282806/0eadb185-e1d2-4b3d-a544-69e0db4e663e)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-11 at 19 36 33](https://github.com/webblyss/pokebook/assets/60282806/8d02bf60-315c-414b-a34a-ba801deda52c)
 
-
-## Features
-
-- View details of different Pokémon, including their types, stats, and similarities.
-- Navigate through different sections such as About, Statistics, and Similar Pokémon.
-- Switch between light and dark themes using the theme picker.
 
 ## Dependencies
 
