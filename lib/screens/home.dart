@@ -6,16 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokebook/bloc/poke_bloc.dart';
 import 'package:pokebook/events/poke_events.dart';
-import 'package:pokebook/routes/app_router.dart';
-import 'package:pokebook/shimmers/poke_cards.dart';
 import 'package:pokebook/shimmers/pokemon_list_view.dart';
-import 'package:pokebook/state/poke_state.dart';
 import 'package:pokebook/theme/theme.dart';
 import 'package:pokebook/theme/theme_bloc.dart';
 import 'package:pokebook/widgets/custom_app_bar.dart';
 import 'package:pokebook/widgets/pagination_button.dart';
 import 'package:pokebook/widgets/pokemon_search_text_field.dart';
-import 'package:pokebook/widgets/title_widget.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -27,14 +23,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController controller = TextEditingController();
-  int currentPage = 1;
+  int currentPage = 0;
   static const int itemsPerPage = 2;
   @override
   Widget build(BuildContext context) {
     final themeBloc = BlocProvider.of<ThemeBloc>(context);
     final pokeBloc = BlocProvider.of<PokeBloc>(context);
-    return Scaffold(
-      body: BlocBuilder<ThemeBloc, ThemeData>(
+    return Scaffold(body: BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, state) {
         return Container(
           height: MediaQuery.of(context).size.height,
@@ -77,10 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       (pokeBloc.state.filteredPokemons.length / itemsPerPage)
                           .ceil(),
                   onPageChanged: (pageNumber) {
-                    setState(() {
-                      currentPage = pageNumber;
-                    });
-                    print(pageNumber);
+                    if (pageNumber > pokeBloc.currentPage) {
+                      pokeBloc.add(PokeEvent.loadNextPage);
+                    } else if (pageNumber < pokeBloc.currentPage) {
+                      pokeBloc.add(PokeEvent.loadPreviousPage);
+                    }
+                   
                   },
                 ),
               ),

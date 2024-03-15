@@ -14,9 +14,12 @@ class PokemonListView extends StatelessWidget {
     return Expanded(
       child: BlocBuilder<PokeBloc, PokeState>(
         builder: (context, state) {
-          final startIndex = state.currentPage * 2; // Adjust the multiplier as needed
+          final startIndex = state.currentPage;
           final endIndex = startIndex + 2;
-          final displayedPokemons = state.filteredPokemons.sublist(startIndex, endIndex);
+          final displayedPokemons = state.filteredPokemons.sublist(
+            startIndex,
+            endIndex.clamp(0, state.filteredPokemons.length),
+          );
 
           return ListView.builder(
             shrinkWrap: true,

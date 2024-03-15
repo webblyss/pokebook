@@ -135,112 +135,140 @@ class _DetailsScreenState extends State<DetailsScreen> {
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 50,
-                    child: Material(
-                      elevation: 4,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(5),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Center(
-                          child: Text(
-                            selectedIndex == 0
-                                ? "About"
-                                : selectedIndex == 1
-                                    ? "Statistics"
-                                    : "Similar",
-                            style: themeBloc.state.textTheme.bodyLarge,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: 50,
+                      child: Material(
+                        elevation: 4,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(5),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Center(
+                            child: Text(
+                              selectedIndex == 0
+                                  ? "About"
+                                  : selectedIndex == 1
+                                      ? "Statistics"
+                                      : "Similar",
+                              style: themeBloc.state.textTheme.bodyLarge,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  if (selectedIndex == 0)
-                    PokeBookAboutDetails(
-                      pokeBook: widget.pokeBook,
-                      themeBloc: themeBloc,
-                    ),
-                  if (selectedIndex == 1)
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: widget.pokeBook!.statistics.length,
-                      itemBuilder: (context, index) {
-                        final stats = widget.pokeBook!.statistics.entries
-                            .elementAt(index);
-                        return StatisticItem(statistic: stats);
-                      },
-                    ),
-                  if (selectedIndex == 2)
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: widget.pokeBook!.similar.length,
-                      itemBuilder: (context, index) {
-                        final similar =
-                            widget.pokeBook!.similar.elementAt(index);
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: 300,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
-                                    height: 350,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        Positioned(
-                                          top: 10,
-                                          left: 10,
-                                          right: 10,
-                                          child: Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.8,
-                                            height: 200,
-                                            decoration: BoxDecoration(
-                                              color: HexColor('#EEEEEE'),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                            ),
+                    if (selectedIndex == 0)
+                      PokeBookAboutDetails(
+                        pokeBook: widget.pokeBook,
+                        themeBloc: themeBloc,
+                      ),
+                    if (selectedIndex == 1)
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: widget.pokeBook!.statistics.length,
+                        itemBuilder: (context, index) {
+                          final stats = widget.pokeBook!.statistics.entries
+                              .elementAt(index);
+                          return StatisticItem(statistic: stats);
+                        },
+                      ),
+                    if (selectedIndex == 2)
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: widget.pokeBook!.similar.length,
+                        itemBuilder: (context, index) {
+                          final similar =
+                              widget.pokeBook!.similar.elementAt(index);
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 24),
+                            child: Center(
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                height: 300,
+                                child: Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        print(similar['imageUrl']);
+                                      },
+                                      child: Center(
+                                        child: Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          height: 350,
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                          ),
+                                          child: Stack(
+                                            children: [
+                                              Positioned(
+                                                top: 10,
+                                                left: 10,
+                                                right: 10,
+                                                child: Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      0.8,
+                                                  height: 200,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor('#EEEEEE'),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                  ),
+                                                ),
+                                              ),
+                                              Positioned(
+                                                left: 10,
+                                                right: 10,
+                                                bottom: 50,
+                                                child: Center(
+                                                  child: Text(
+                                                    similar['name'].toString(),
+                                                    style: themeBloc.state
+                                                        .textTheme.bodyLarge,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                  // Positioned(
-                                  //   top: 0,
-                                  //   left: 10,
-                                  //   right: 10,
-                                  //   child: Transform.translate(
-                                  //     offset: const Offset(0, -50),
-                                  //     child: ThemeAwareSvgImage(
-                                  //       imagePath: similar.keys.first,
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                ],
+                                    Positioned(
+                                      top: 0,
+                                      left: 10,
+                                      right: 10,
+                                      child: Transform.translate(
+                                        offset: const Offset(0, -50),
+                                        child: ThemeAwareSvgImage(
+                                          imagePath:
+                                              similar['imageUrl'].toString(),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                ],
+                          );
+                        },
+                      ),
+                  ],
+                ),
               ),
             ))
           ],

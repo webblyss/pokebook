@@ -5,7 +5,6 @@ import 'package:pokebook/shimmers/pokemon_type_row.dart';
 import 'package:pokebook/theme/theme_bloc.dart';
 import 'package:pokebook/utils/hex_color.dart';
 import 'package:pokebook/widgets/svg_image.dart';
-import 'package:pokebook/widgets/type_chip_card.dart';
 
 class PokeCard extends StatefulWidget {
   final PokeModel pokeBook;
