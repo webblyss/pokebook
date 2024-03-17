@@ -20,6 +20,9 @@ Pokebook is a Flutter application that allows users to explore information about
 ![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-11 at 21 01 06](https://github.com/webblyss/pokebook/assets/60282806/befa2ec7-bddf-45fc-b8eb-16fce070eebd)
 ![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-12 at 21 47 50](https://github.com/webblyss/pokebook/assets/60282806/fe4491bd-7778-450a-b42f-954b89622509)
 ![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-11 at 19 36 33](https://github.com/webblyss/pokebook/assets/60282806/8d02bf60-315c-414b-a34a-ba801deda52c)
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-15 at 17 24 53](https://github.com/webblyss/pokebook/assets/60282806/61c68f48-5ba0-4079-a163-5703dd3f056f)
+
+![Simulator Screenshot - iPhone 15 Pro Max - 2024-03-12 at 21 47 50](https://github.com/webblyss/pokebook/assets/60282806/4d04ba2d-c735-46b4-81a7-01040b3bd92b)
 
 
 
